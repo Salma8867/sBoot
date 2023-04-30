@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: sbootpod
+  name: sbootpod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sbootpod
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: sbootpod
+    spec:
+      containers:
+      - image: salma8867/sbootproject:1.0
+        name: sbootpod
+        ports:
+        - containerPort: 8091
+        resources: {}
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: sbootpod
+  name: sbootpod
+spec:
+  ports:
+  - name: 8090-8080
+    port: 8091
+    protocol: TCP
+    targetPort: 8091
+  selector:
+    app: sboot
+  type: LoadBalancer
+status:
+  loadBalancer: {}
