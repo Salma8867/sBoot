@@ -28,7 +28,3 @@ resource "azurerm_kubernetes_cluster" "sal_k8s" {
     type = "SystemAssigned"
   }
  }
-
-  identity {
-    type = "SystemAssigned"
-  }
